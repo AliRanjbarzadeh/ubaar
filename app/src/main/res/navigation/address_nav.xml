@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/address_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/address_nav"
+    app:startDestination="@id/addressesFragment">
+    <fragment
+        android:id="@+id/addressesFragment"
+        android:name="ir.ubaar.employeetask.presentation.address.AddressesFragment"
+        android:label="AddressesFragment"
+        tools:layout="@layout/fragment_addresses" />
 </navigation>

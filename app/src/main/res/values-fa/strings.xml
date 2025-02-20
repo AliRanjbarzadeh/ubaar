@@ -8,4 +8,25 @@
     <!--Regular Strings-->
     <string name="app_name">آدرس های من</string>
     <string name="nothing_found">موردی یافت نشد</string>
+    <string name="addresses">آدرس ها</string>
+    <string name="add_address">آدرس جدید</string>
+    <string name="first_name">نام</string>
+    <string name="last_name">نام خانوادگی</string>
+    <string name="mobile">تلفن همراه</string>
+    <string name="phone">تلفن ثابت</string>
+    <string name="address">آدرس</string>
+    <string name="gender">جنسیت</string>
+    <string name="exact_address">آدرس دقیق</string>
+    <string name="male">آقا</string>
+    <string name="female">خانم</string>
+    <string name="next_step">مرحله بعد</string>
+    <string name="confirm_location">تایید موقعیت</string>
+    <string name="enter_first_name">لطفا نام را وارد کنید</string>
+    <string name="enter_last_name">لطفا نام خانوادگی را وارد کنید</string>
+    <string name="enter_mobile">لطفا تلفن همراه را وارد کنید</string>
+    <string name="enter_phone">لطفا تلفن ثابت را وارد کنید</string>
+    <string name="enter_address">لطفا آدرس دقیق را وارد کنید</string>
+    <string name="location_on_map">موقعیت روی نقشه</string>
+    <string name="select_location">موقعیت مورد نظر خود را روی نقشه مشخص کنید</string>
+    <string name="response_error">خطایی هنگام ارتباط با سرور رخ داده است، لطفا با پشتیبانی تماس بگیرید</string>
 </resources>

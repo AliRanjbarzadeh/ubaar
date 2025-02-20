@@ -1,6 +1,7 @@
 package ir.ubaar.employeetask.core.exceptions
 
 import com.google.gson.Gson
+import ir.ubaar.employeetask.core.utilities.Logger
 import ir.ubaar.employeetask.data.models.ErrorBody
 import ir.ubaar.employeetask.data.models.ErrorMessage
 import ir.ubaar.employeetask.domain.network.HttpErrors
@@ -13,81 +14,56 @@ import javax.inject.Singleton
 
 
 @Singleton
-class NetworkExceptionHandler @Inject constructor(private val gson: Gson) {
-	fun traceErrorException(throwable: Throwable?): ErrorMessage {
-		val errorMessage: ErrorMessage = when (throwable) {
+class NetworkExceptionHandler @Inject constructor(private val gson: Gson, private val logger: Logger) {
+	fun traceErrorException(throwable: Throwable?): ErrorBody {
+		logger.debug(throwable?.message, "HTTP_EXP")
+		val errorBody: ErrorBody = when (throwable) {
 
 			// if throwable is an instance of HttpException
 			// then attempt to parse error data from response body
 			is HttpException -> {
-				when(throwable.code()) {
-					401 -> getHttpError(throwable.response()?.errorBody())
-
-					403 -> ErrorMessage(
-						status = HttpErrors.Forbidden,
-						message = "You do not have permission to perform this operation"
-					)
-
-					500 -> ErrorMessage(
-						status = HttpErrors.ServerError,
-						message = "Sorry, the server has a technical problem, please try again in a few moments"
-					)
-				}
-				// handle UNAUTHORIZED situation (when token expired)
-				if (throwable.code() == 401) {
-					getHttpError(throwable.response()?.errorBody())
-				} else if (throwable.code() == 403) {
-					ErrorMessage(
-						status = HttpErrors.Forbidden,
-						message = "You do not have permission to perform this operation"
-					)
-				} else if (throwable.code() == 500) {
-					ErrorMessage(
-						status = HttpErrors.ServerError,
-						message = "Sorry, the server has a technical problem, please try again in a few moments"
-					)
-				} else {
-					getHttpError(throwable.response()?.errorBody())
-				}
+				logger.debug(throwable.code(), "HTTP_EXP")
+				getHttpError(throwable.code(), throwable.response()?.errorBody())
 			}
 
 			// handle api call timeout error
 			is SocketTimeoutException -> {
-				ErrorMessage(
-					status = HttpErrors.TimeOut,
+				ErrorBody(
+					status = false,
 					message = "Request Timeout"
 				)
 			}
 
 			// handle connection error
 			is IOException -> {
-				ErrorMessage(
-					status = HttpErrors.NotDefined,
-					message = "Something went wrong, Please try again later"
+				ErrorBody(
+					status = false,
+					message = "Something went wrong, Please try again later",
 				)
 			}
 
-			else -> ErrorMessage(
-				status = HttpErrors.NotDefined,
+			else -> ErrorBody(
+				status = false,
 				message = "Something went wrong, Please try again later"
 			)
 		}
-		return errorMessage
+		return errorBody
 	}
 
 	/**
 	 * attempts to parse http response body and get error data from it
 	 *
 	 * @param body retrofit response body
-	 * @return returns an instance of [ErrorModel] with parsed data or NOT_DEFINED status
+	 * @return returns an instance of [ErrorBody] with parsed data or NOT_DEFINED status
 	 */
-	private fun getHttpError(body: ResponseBody?): ErrorMessage {
+	private fun getHttpError(statusCode: Int, body: ResponseBody?): ErrorBody {
 		return try {
 			val error = gson.fromJson(body?.string(), ErrorBody::class.java)
-			error.toDomain()
+			error.statusCode = HttpErrors.fromValue(statusCode)
+			error
 		} catch (e: Throwable) {
 			e.printStackTrace()
-			ErrorMessage(status = HttpErrors.BadResponse, message = e.message.toString())
+			ErrorBody(status = false, message = e.message.toString())
 		}
 
 	}

@@ -12,6 +12,7 @@ import ir.ubaar.employeetask.core.di.BaseNetwork
 import ir.ubaar.employeetask.core.di.BaseRetrofit
 import ir.ubaar.employeetask.core.dispatchers.DispatchersProvider
 import ir.ubaar.employeetask.core.exceptions.NetworkExceptionHandler
+import ir.ubaar.employeetask.core.utilities.Logger
 import ir.ubaar.employeetask.core.utilities.NetworkWatcher
 import ir.ubaar.employeetask.data.api.ApiService
 import okhttp3.Cache
@@ -32,7 +33,7 @@ object NetworkModule {
 
 	@Provides
 	@Singleton
-	fun providesApiExceptionHandler(gson: Gson): NetworkExceptionHandler = NetworkExceptionHandler(gson)
+	fun providesApiExceptionHandler(gson: Gson, logger: Logger): NetworkExceptionHandler = NetworkExceptionHandler(gson, logger)
 
 	@Provides
 	@Singleton

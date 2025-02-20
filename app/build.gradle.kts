@@ -3,6 +3,7 @@ plugins {
 	alias(libs.plugins.kotlin.android)
 	alias(libs.plugins.hilt)
 	id("org.jetbrains.kotlin.kapt")
+	id("kotlin-parcelize")
 }
 
 android {
@@ -76,6 +77,8 @@ dependencies {
 	implementation(libs.keyboardObserver)
 	implementation(libs.hawk)
 	implementation(libs.lottie)
+	implementation(libs.materialDialog.core)
+	implementation(libs.materialDialog.bottomsheets)
 
 	//Tests
 	testImplementation(libs.mockito.core)

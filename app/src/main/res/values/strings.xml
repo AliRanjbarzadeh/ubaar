@@ -7,4 +7,25 @@
     <!--Regular Strings-->
     <string name="app_name">My Addresses</string>
     <string name="nothing_found">Nothing found</string>
+    <string name="addresses">Addresses</string>
+    <string name="add_address">New address</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="mobile">Mobile</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="gender">Gender</string>
+    <string name="exact_address">Exact address</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="next_step">Next Step</string>
+    <string name="confirm_location">Confirm Location</string>
+    <string name="enter_first_name">Please enter first name</string>
+    <string name="enter_last_name">Please enter last name</string>
+    <string name="enter_mobile">Please enter mobile number</string>
+    <string name="enter_phone">Please enter phone number</string>
+    <string name="enter_address">Please enter exact address</string>
+    <string name="location_on_map">Location on map</string>
+    <string name="select_location">Select your location on map</string>
+    <string name="response_error">There is an error when commuting with server, contact support</string>
 </resources>
