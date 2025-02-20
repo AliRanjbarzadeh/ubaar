@@ -1,0 +1,10 @@
+<resources>
+    <!--Fonts-->
+    <string name="font_regular">fonts/en/regular.ttf</string>
+    <string name="font_light">fonts/en/light.ttf</string>
+    <string name="font_bold">fonts/en/bold.ttf</string>
+
+    <!--Regular Strings-->
+    <string name="app_name">My Addresses</string>
+    <string name="nothing_found">Nothing found</string>
+</resources>

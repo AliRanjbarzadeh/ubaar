@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Fonts-->
+    <string name="font_regular">fonts/regular.ttf</string>
+    <string name="font_light">fonts/light.ttf</string>
+    <string name="font_bold">fonts/bold.ttf</string>
+
+    <!--Regular Strings-->
+    <string name="app_name">آدرس های من</string>
+    <string name="nothing_found">موردی یافت نشد</string>
+</resources>
