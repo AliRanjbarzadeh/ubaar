@@ -8,5 +8,14 @@
         android:id="@+id/addressesFragment"
         android:name="ir.ubaar.employeetask.presentation.address.AddressesFragment"
         android:label="AddressesFragment"
-        tools:layout="@layout/fragment_addresses" />
+        tools:layout="@layout/fragment_addresses" >
+        <action
+            android:id="@+id/to_add_address"
+            app:destination="@id/addressAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressAddFragment"
+        android:name="ir.ubaar.employeetask.presentation.address.add.AddressAddFragment"
+        android:label="AddressAddFragment"
+        tools:layout="@layout/fragment_address_add" />
 </navigation>

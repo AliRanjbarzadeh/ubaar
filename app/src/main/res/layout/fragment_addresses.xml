@@ -6,10 +6,11 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/main_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layoutDirection="locale">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_transactions"
+            android:id="@+id/rv_addresses"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
@@ -21,7 +22,7 @@
             tools:listitem="@layout/address_item" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/btn_add_transaction"
+            android:id="@+id/btn_add_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"

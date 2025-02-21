@@ -9,4 +9,9 @@ object Configs {
 	object Sessions {
 		const val LANGUAGE = "user.language"
 	}
+
+	object Authenticate {
+		const val USERNAME = "09822222222"
+		const val PASSWORD = "Sana12345678"
+	}
 }

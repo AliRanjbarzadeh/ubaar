@@ -30,7 +30,7 @@ class NetworkExceptionHandler @Inject constructor(private val gson: Gson, privat
 			is SocketTimeoutException -> {
 				ErrorBody(
 					status = false,
-					message = "Request Timeout"
+					message = "زمان پاسخ سرور پایان یافته، لطفا دوباره تلاش کنید"
 				)
 			}
 
@@ -38,13 +38,13 @@ class NetworkExceptionHandler @Inject constructor(private val gson: Gson, privat
 			is IOException -> {
 				ErrorBody(
 					status = false,
-					message = "Something went wrong, Please try again later",
+					message = "خطایی در اتصال به سرور رخ داده است، لطفا دوباره تلاش کنید",
 				)
 			}
 
 			else -> ErrorBody(
 				status = false,
-				message = "Something went wrong, Please try again later"
+				message = "خطایی نامشخص، لطفا دوباره تلاش کنید"
 			)
 		}
 		return errorBody

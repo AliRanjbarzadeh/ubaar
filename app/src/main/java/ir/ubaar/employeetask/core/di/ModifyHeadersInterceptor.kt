@@ -1,39 +1,30 @@
 package ir.ubaar.employeetask.core.di
 
+import android.util.Base64
+import ir.ubaar.employeetask.core.Configs
 import okhttp3.Interceptor
 import okhttp3.Response
+import java.nio.charset.StandardCharsets
 import javax.inject.Inject
 
 
 class ModifyHeadersInterceptor @Inject constructor() : Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response {
-        val request = chain.request()
-        val builder = request.newBuilder()
+	override fun intercept(chain: Interceptor.Chain): Response {
+		val request = chain.request()
+		val builder = request.newBuilder()
 
-//		try {
-//			var authorization = loadFromSp(BuildConfig.SESSION_TOKEN, "")
-//			if (authorization.isEmpty()) {
-//				authorization = loadFromSp(BuildConfig.REGISTER_TOKEN, BuildConfig.DEFAULT_TOKEN)
-//			}
-//			val language = loadFromSp(BuildConfig.SESSION_LANGUAGE, BuildConfig.DEFAULT_LANGUAGE)
-//
-//			val pushToken = loadFromSp(BuildConfig.SESSION_PUSH_TOKEN, "")
-//
-//			builder.header("Cache-Control", "no-cache")
-//			builder.header("User-Agent", BuildConfig.USER_AGENT)
-//			builder.header("AppVersion", BuildConfig.APP_VERSION)
-//			builder.header("AppLanguage", language)
-//			builder.header("DeviceType", "1")
-//			builder.header("DeviceVersion", Build.VERSION.RELEASE)
-//			builder.header("DeviceModel", Build.MODEL)
-//			builder.header("DeviceManufacture", Build.MANUFACTURER)
-//			builder.header("DevicePushToken", pushToken)
-//			builder.header(BuildConfig.AUTHORIZATION, BuildConfig.TOKEN_PREFIX + authorization)
-//		} catch (ex: Exception) {
-////			e(ex.message, "HeaderErrors")
-//		}
+		try {
+			builder.header("Cache-Control", "no-cache")
+			builder.header("Content-Type", "application/json")
 
-        val builderResponse = chain.proceed(builder.build())
-        return builderResponse
-    }
+			val credentials = "${Configs.Authenticate.USERNAME}:${Configs.Authenticate.PASSWORD}"
+			val authorization = "Basic " + Base64.encodeToString(credentials.toByteArray(StandardCharsets.UTF_8), Base64.NO_WRAP)
+			builder.header("Authorization", authorization)
+		} catch (ex: Exception) {
+//			e(ex.message, "HeaderErrors")
+		}
+
+		val builderResponse = chain.proceed(builder.build())
+		return builderResponse
+	}
 }

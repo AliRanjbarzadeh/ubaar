@@ -15,10 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_4sdp"
-        android:clickable="true"
-        android:focusable="true"
         app:cardBackgroundColor="@color/md_theme_surfaceContainerLowest"
-        app:cardCornerRadius="@dimen/_8sdp">
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardElevation="@dimen/_2sdp"
+        app:strokeWidth="0dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -27,8 +27,12 @@
             android:padding="@dimen/_8sdp">
 
             <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.FontBold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/baseline_location_pin_24"
+                android:drawablePadding="@dimen/_4sdp"
+                android:drawableTint="@color/md_theme_primary"
                 android:ellipsize="end"
                 android:gravity="start|center_vertical"
                 android:lines="2"
@@ -43,23 +47,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="1">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/baseline_person_24"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:drawableTint="@color/md_theme_primary"
+                    android:gravity="start|center_vertical"
                     android:text="@{item.fullName, default=@string/first_name}"
+                    android:textAlignment="viewStart"
                     android:textColor="@color/md_theme_onSurfaceVariant"
                     android:textSize="@dimen/_10ssp" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="0dp"
+                    android:id="@+id/txt_mobile"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
+                    android:drawableStart="@drawable/baseline_phone_android_24"
+                    android:drawableTint="@color/md_theme_primary"
+                    android:gravity="start|center_vertical"
                     android:text="@{item.mobile, default=@string/mobile}"
-                    android:textAlignment="viewEnd"
+                    android:textAlignment="viewStart"
                     android:textColor="@color/md_theme_onSurfaceVariant"
                     android:textSize="@dimen/_10ssp" />
 

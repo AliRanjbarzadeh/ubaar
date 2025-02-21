@@ -14,6 +14,9 @@ class AddressViewModel @Inject constructor(
 	dispatchersProvider: DispatchersProvider,
 	private val addressListUseCase: AddressListUseCase,
 ) : BaseViewModel(dispatchersProvider) {
+	private var currentIndex = 0
+	private val pageSize = 30
+	private var allAddresses = emptyList<AddressModel>()
 	private val _addresses: MutableLiveData<NetworkResult<List<AddressModel>>> = MutableLiveData()
 	var isFetched = false
 
@@ -28,9 +31,22 @@ class AddressViewModel @Inject constructor(
 		execute {
 			_isLoading.postValue(true)
 			val result = addressListUseCase()
-			_addresses.postValue(result)
+			if (result is NetworkResult.Success) {
+				allAddresses = result.data
+				loadNextChunk()
+			} else if (result is NetworkResult.Error) {
+				_addresses.postValue(result)
+			}
 			_isLoading.postValue(false)
 		}
+	}
+
+	fun loadNextChunk() {
+		if (currentIndex >= allAddresses.size)
+			return
+		val nextBatch = allAddresses.drop(currentIndex).take(pageSize)
+		currentIndex += nextBatch.size
+		_addresses.postValue(NetworkResult.Success(nextBatch))
 	}
 
 	fun getAddresses(): MutableLiveData<NetworkResult<List<AddressModel>>> = _addresses

@@ -142,6 +142,6 @@
     <color name="md_theme_surfaceContainerHighest_highContrast">#DEE3E5</color>
     <color name="text_muted">#ACAEAF</color>
     <color name="text_muted_dim">#BEACAEAF</color>
-    <color name="deposit">#5DA62C</color>
-    <color name="withdraw">#C63131</color>
+    <color name="my_green">#5DA62C</color>
+    <color name="my_red">#C63131</color>
 </resources>
