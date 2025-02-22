@@ -31,4 +31,9 @@
     <string name="response_error">خطایی هنگام ارتباط با سرور رخ داده است، لطفا با پشتیبانی تماس بگیرید</string>
     <string name="try_again">تلاش مجدد</string>
     <string name="close">بستن</string>
+    <string name="location_service_did_not_enable">موقعیت مکانی توسط کاربر روشن نشده است</string>
+    <string name="permission_needed">نیازمند دسترسی</string>
+    <string name="location_permission_description">برای پیدا کردن موقعیت مکانی شما نیازمند دسترسی موقعیت مکانی هستیم، لطفا دسترسی هایی که درخواست می شوند را تایید کنید</string>
+    <string name="open_setting">باز کردن تنظیمات</string>
+    <string name="agree">موافقم</string>
 </resources>

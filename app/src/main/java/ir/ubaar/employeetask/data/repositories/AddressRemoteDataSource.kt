@@ -3,6 +3,7 @@ package ir.ubaar.employeetask.data.repositories
 import ir.ubaar.employeetask.core.exceptions.NetworkExceptionHandler
 import ir.ubaar.employeetask.data.api.ApiService
 import ir.ubaar.employeetask.data.models.AddressModel
+import ir.ubaar.employeetask.data.models.AddressRequestModel
 import ir.ubaar.employeetask.domain.network.NetworkResult
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -21,9 +22,9 @@ class AddressRemoteDataSource @Inject constructor(
 		}
 	}
 
-	override suspend fun save(rawBody: String): NetworkResult<AddressModel> {
+	override suspend fun save(address: AddressRequestModel): NetworkResult<AddressModel> {
 		return try {
-			val result = apiService.saveAddress(rawBody).await()
+			val result = apiService.saveAddress(address).await()
 			return NetworkResult.Success(result)
 		} catch (e: Exception) {
 			NetworkResult.Error(exceptionHandler.traceErrorException(e))

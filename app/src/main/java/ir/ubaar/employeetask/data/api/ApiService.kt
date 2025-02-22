@@ -1,6 +1,7 @@
 package ir.ubaar.employeetask.data.api
 
 import ir.ubaar.employeetask.data.models.AddressModel
+import ir.ubaar.employeetask.data.models.AddressRequestModel
 import kotlinx.coroutines.Deferred
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -12,6 +13,6 @@ interface ApiService {
 	fun getAddresses(): Deferred<List<AddressModel>>
 
 	//Save address
-	@POST
-	fun saveAddress(@Body address: String): Deferred<AddressModel>
+	@POST("address")
+	fun saveAddress(@Body address: AddressRequestModel): Deferred<AddressModel>
 }

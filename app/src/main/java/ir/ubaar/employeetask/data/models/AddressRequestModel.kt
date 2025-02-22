@@ -1,9 +1,11 @@
 package ir.ubaar.employeetask.data.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class AddressRequestModel(
-
 	@SerializedName("region")
 	var region: Int = 1,  // Region ID
 
@@ -30,4 +32,4 @@ data class AddressRequestModel(
 
 	@SerializedName("gender")
 	var gender: String,  // Gender
-)
+) : Parcelable

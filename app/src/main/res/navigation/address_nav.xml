@@ -17,5 +17,18 @@
         android:id="@+id/addressAddFragment"
         android:name="ir.ubaar.employeetask.presentation.address.add.AddressAddFragment"
         android:label="AddressAddFragment"
-        tools:layout="@layout/fragment_address_add" />
+        tools:layout="@layout/fragment_address_add" >
+        <action
+            android:id="@+id/to_map"
+            app:destination="@id/addressMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressMapFragment"
+        tools:layout="@layout/fragment_address_map"
+        android:name="ir.ubaar.employeetask.presentation.address.add.AddressMapFragment"
+        android:label="AddressMapFragment" >
+        <argument
+            android:name="address_request"
+            app:argType="ir.ubaar.employeetask.data.models.AddressRequestModel" />
+    </fragment>
 </navigation>

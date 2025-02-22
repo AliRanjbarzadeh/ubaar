@@ -5,6 +5,7 @@ plugins {
 	id("androidx.navigation.safeargs.kotlin")
 	id("org.jetbrains.kotlin.kapt")
 	id("kotlin-parcelize")
+	id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -80,6 +81,8 @@ dependencies {
 	implementation(libs.lottie)
 	implementation(libs.materialDialog.core)
 	implementation(libs.materialDialog.bottomsheets)
+	implementation(libs.play.services.maps)
+	implementation(libs.play.services.location)
 
 	//Tests
 	testImplementation(libs.mockito.core)

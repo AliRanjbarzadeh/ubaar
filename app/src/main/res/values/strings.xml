@@ -1,4 +1,5 @@
 <resources>
+    <string name="google_api_key" translatable="false">AIzaSyC8Us5V-bkV7remb_uZfojkDhRXQubaLiU</string>
     <!--Fonts-->
     <string name="font_regular">fonts/en/regular.ttf</string>
     <string name="font_light">fonts/en/light.ttf</string>
@@ -30,4 +31,9 @@
     <string name="response_error">There is an error when commuting with server, contact support</string>
     <string name="try_again">Try again</string>
     <string name="close">Close</string>
+    <string name="location_service_did_not_enable">The location service did not enable by user</string>
+    <string name="permission_needed">Permission needed</string>
+    <string name="location_permission_description">To find your location on map, we need location permission.\nPlease allow permissions will request</string>
+    <string name="open_setting">Open setting</string>
+    <string name="agree">Agree</string>
 </resources>

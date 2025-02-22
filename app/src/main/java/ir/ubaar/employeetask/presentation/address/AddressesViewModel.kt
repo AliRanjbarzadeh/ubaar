@@ -10,7 +10,7 @@ import ir.ubaar.employeetask.domain.usecases.AddressListUseCase
 import javax.inject.Inject
 
 @HiltViewModel
-class AddressViewModel @Inject constructor(
+class AddressesViewModel @Inject constructor(
 	dispatchersProvider: DispatchersProvider,
 	private val addressListUseCase: AddressListUseCase,
 ) : BaseViewModel(dispatchersProvider) {
